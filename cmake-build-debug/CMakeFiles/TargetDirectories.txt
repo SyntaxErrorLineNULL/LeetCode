@@ -1,3 +1,0 @@
-J:/LeetCode/Arrays/cmake-build-debug/CMakeFiles/Arrays.dir
-J:/LeetCode/Arrays/cmake-build-debug/CMakeFiles/edit_cache.dir
-J:/LeetCode/Arrays/cmake-build-debug/CMakeFiles/rebuild_cache.dir
