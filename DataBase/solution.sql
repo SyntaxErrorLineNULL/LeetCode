@@ -107,3 +107,38 @@ insert into Employee (id, salary) values ('3', '300')
 select max(Salary) as SecondHighestSalary
     from employee
         where Salary < (select max(Salary) from Employee)
+
+
+-- 177. Nth Highest Salary (PL/SQL)
+Create table If Not Exists Employee (Id int, Salary int)
+Truncate table Employee
+insert into Employee (id, salary) values ('1', '100')
+insert into Employee (id, salary) values ('2', '200')
+insert into Employee (id, salary) values ('3', '300')
+
+CREATE FUNCTION getNthHighestSalary(N IN NUMBER) RETURN NUMBER IS result NUMBER;
+BEGIN
+SELECT x.Salary
+    INTO result FROM(
+        SELECT Salary, ROWNUM rr
+            FROM (SELECT DISTINCT Salary FROM Employee ORDER BY Salary DESC)
+    ) x WHERE x.rr = n;
+    RETURN result;
+Exception
+            WHEN NO_DATA_FOUND THEN
+        result := NULL;
+END;
+-- -- 177. Nth Highest Salary (MySQL)
+CREATE FUNCTION getNthHighestSalary(N INT) RETURNS INT
+BEGIN
+SET N = N -1;
+RETURN (
+        # Write your MySQL query statement below.
+      SELECT DISTINCT Salary FROM Employee ORDER BY Salary DESC LIMIT N, 1
+    );
+END
+
+-- 178. Rank Scores
+
+/* Write your PL/SQL query statement below */
+SELECT score, DENSE_RANK() OVER (ORDER BY score DESC) AS Rank FROM scores ORDER BY score DESC;
