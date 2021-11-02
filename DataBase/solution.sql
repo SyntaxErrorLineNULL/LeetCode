@@ -93,3 +93,17 @@ update salary
 set sex = CASE sex
       when 'm' then 'f' else 'm'
 end;
+
+/**
+  Second Highest Salary
+ */
+
+Create table If Not Exists Employee (id int, salary int)
+Truncate table Employee
+insert into Employee (id, salary) values ('1', '100')
+insert into Employee (id, salary) values ('2', '200')
+insert into Employee (id, salary) values ('3', '300')
+
+select max(Salary) as SecondHighestSalary
+    from employee
+        where Salary < (select max(Salary) from Employee)
