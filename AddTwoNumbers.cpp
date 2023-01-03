@@ -5,17 +5,17 @@ struct ListNode {
     int val;
     ListNode *next;
     ListNode() : val(0), next(nullptr) {}
-    ListNode(int x) : val(x), next(nullptr) {}
+    explicit ListNode(int x) : val(x), next(nullptr) {}
     ListNode(int x, ListNode *next) : val(x), next(next) {}
 };
 
 class Solution {
 public:
-    ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
-        ListNode *Result = new ListNode((int) 0);
+    static ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
+        auto *Result = new ListNode((int) 0);
         int Carry = 0;
         ListNode *Current = Result;
-        while(l1 != NULL || l2 != NULL){
+        while(l1 != nullptr || l2 != nullptr){
             int Sum = Carry;
             if(l1)
                 // Current->val += l1->val;
